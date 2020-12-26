@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface DownloadFileService {
-	Resource dawnloadFile();
+	Resource dawnloadFile(String hashUri);
 }

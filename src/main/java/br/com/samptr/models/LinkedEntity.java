@@ -11,8 +11,13 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
 @Table(name = "links")
+@Data
+@NoArgsConstructor
 public class LinkedEntity {
 	
     @Id
