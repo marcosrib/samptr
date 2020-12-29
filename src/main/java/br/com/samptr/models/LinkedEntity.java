@@ -11,13 +11,17 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "links")
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class LinkedEntity {
 	
     @Id
@@ -25,7 +29,7 @@ public class LinkedEntity {
 	private Long id;
     
     @Column(name="uri_drive", length = 1000)
-	private String uriDrive;
+	private String uri;
     
     @Column(name="hash_uri",  length = 500)
 	private String hashUri;

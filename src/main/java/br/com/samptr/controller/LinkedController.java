@@ -1,26 +1,45 @@
 package br.com.samptr.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import br.com.samptr.dtos.LinkedDTO;
 import br.com.samptr.models.LinkedEntity;
 import br.com.samptr.services.LinkedService;
 
-@RestController
-@RequestMapping("linked")
+@Controller
 public class LinkedController {
+
+	private static final String URL = "http://localhost:8080/download/";
 	
 	@Autowired
 	private LinkedService service;
-	
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public LinkedEntity create(@RequestBody LinkedEntity entity) {
-		return service.save(entity);
+
+	@PostMapping(value = "/addlink")
+	public String create(@Validated LinkedDTO dto, BindingResult result, Model model) {
+		LinkedEntity linkendEntity  = service.save(convertDTOToEntity(dto));
+		LinkedDTO dtoConverted = convertEntityToDTO(linkendEntity);
+		dtoConverted.setUrlDownload(URL + linkendEntity.getHashUri() );
+		model.addAttribute("linked", dtoConverted);
+		return "/index";
 	}
+
+	private LinkedEntity convertDTOToEntity(LinkedDTO dto) {
+		return LinkedEntity.builder()
+				.uri(dto.getUri())
+				.build();
+	}
+	
+	private LinkedDTO convertEntityToDTO(LinkedEntity entity) {
+		return LinkedDTO.builder()
+				.id(entity.getId())
+				.build();
+	}
+	
+	
 }

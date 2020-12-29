@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="/css/styles.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+		<form action="/addlink" method="post">
+			<input type="text" name="uri" placeholder="Digite a URL do oneDrive">
+			<Button type="submit">Gerar link</Button>
+		</form>
+		<div class="selector">
+			<p th:if="${linked != null}" th:text="*{linked.urlDownload}"></p>
+		</div>
+	</div>
+</body>
+</html>

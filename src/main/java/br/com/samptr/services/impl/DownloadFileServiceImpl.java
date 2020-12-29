@@ -43,8 +43,8 @@ public class DownloadFileServiceImpl implements DownloadFileService {
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_OCTET_STREAM));
 		HttpEntity<String> entity = new HttpEntity<>(headers);
 
-		String uri = "https://onedrive.live.com/download?resid=" + getResid(linkedEntity.get().getUriDrive())
-				+ "&authkey=" + getKeyAuth(linkedEntity.get().getUriDrive()) + "";
+		String uri = "https://onedrive.live.com/download?resid=" + getResid(linkedEntity.get().getUri())
+				+ "&authkey=" + getKeyAuth(linkedEntity.get().getUri()) + "";
 
 		try {
 			String url = URLDecoder.decode(uri, "UTF-8");
