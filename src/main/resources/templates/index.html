@@ -10,13 +10,51 @@
 </head>
 <body>
 	<div class="container">
-		<form action="/addlink" method="post">
-			<input type="text" name="uri" placeholder="Digite a URL do oneDrive">
-			<Button type="submit">Gerar link</Button>
-		</form>
-		<div class="selector">
-			<p th:if="${linked != null}" th:text="*{linked.urlDownload}"></p>
+		<div>
+			<form action="/addlink" method="post">
+				<input type="text" name="uri" placeholder="Digite a URL do oneDrive">
+				<Button type="submit">Gerar link</Button>
+			</form>
 		</div>
+		<div class="selector">
+			<p id="selector" th:if="${linked != null}"
+				th:text="*{linked.urlDownload}"></p>
+		</div>
+
+		<div class="tooltip">
+			<button class="buttonCopy" onclick="copyText()"
+				onmouseout="outFunc()">
+				<span class="tooltiptext" id="myTooltip">Copiar o texto</span>
+				Copiar texto
+			</button>
+		</div>
+
 	</div>
+
+	<script>
+		function copyText() {
+			var text = document.getElementById("selector").innerText;
+			var elem = document.createElement("textarea");
+			document.body.appendChild(elem);
+			elem.value = text;
+			elem.select();
+			document.execCommand("copy");
+			document.body.removeChild(elem);
+
+			
+			var tooltip = document.getElementById("myTooltip");
+			tooltip.innerHTML = "Texto copiado ";
+			tooltip.style.visibility = "visible";
+			tooltip.style.opacity = "1";
+			
+		}
+		function outFunc() {
+			var tooltip = document.getElementById("myTooltip");
+			tooltip.style.visibility = "none";
+			tooltip.style.opacity = "0";
+		}
+	</script>
+
+
 </body>
 </html>

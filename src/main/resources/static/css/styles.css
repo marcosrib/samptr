@@ -25,54 +25,111 @@ button {
 }
 
 .container {
-	margin: auto;
-	margin-top: 150px;
-	width: 50%;
-}
-
-form {
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: column; 
+	width: 50%;
+	margin: 150px auto;
+  
 }
 
-input {
+form>button {
 	height: 50px;
-	margin: 0 5px 0 5px;
-}
-
-button {
-	height: 50px;
-	background: #ff9000;
+	width: 20%; 
+	background : #ff9000;
 	border-radius: 10px;
 	border: 0;
 	padding: 0 16px;
 	color: #312e38;
 	font-weight: 500;
 	transition: background-color 0.2s;
+	background: #ff9000;
 }
 
 
-button:hover {
+form>button:hover {
 	opacity: 0.9;
 }
 
-
- input {
-    flex: 1;
-    background: transparent;
-    border: 2px solid #ff9000;
-    padding: 3px;
-   
-  }
-  
-  .selector {
-  display: flex;
-  align-items: center;
-  height: 100px;
-  margin: 20px 0 0 0;
-  background: #eee;
+input {
+	height: 50px;
+	width: 78%;
+	background: transparent;
+	border: 2px solid #ff9000;
+	padding: 3px;
+	margin-right: 5px;
 }
+
+@media ( max-width : 1200px) {
+	form>button {
+		margin-top: 5px;
+		width: 100%;
+	}
+	input {
+		width: 100%;
+	}
+	form {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}
+
+.selector {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	height: 100px;
+	margin: 20px 0 0 0;
+	background: #eee;
+	padding: 5px;
+}
+
 p {
-	color: #000
+	color: #000;
+	word-break: break-all;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 140px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 1;
+	bottom: 50%;
+	left: 12%;
+	margin-left: -75px;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+}
+
+.buttonCopy {
+	height: 30px;
+	width: 150px;
+	margin-top: 50px;
+	background: #2F4F4F;
+	border-radius: 0px;
+	border: 0;
+	padding: 0 16px;
+	color: #FFF;
+	font-weight: 500;
+	transition: background-color 0.2s;
 }

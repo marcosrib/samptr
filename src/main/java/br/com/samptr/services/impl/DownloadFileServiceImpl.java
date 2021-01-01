@@ -63,6 +63,6 @@ public class DownloadFileServiceImpl implements DownloadFileService {
 	}
 
 	private String getKeyAuth(String uri) {
-		return uri.split(KEY_AUTH)[1];
+		return uri.split(KEY_AUTH)[1].split(" ")[0].replace("\"", "");
 	}
 }
