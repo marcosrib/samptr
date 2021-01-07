@@ -28,7 +28,7 @@ public class LinkedController {
 	@Autowired
 	private LinkedRepository repository;
 	
-	@GetMapping(value = "/create-link")
+	//@GetMapping(value = "/create-link")
 	public String getLink( ModelMap model) {
 		
        return "redirect:/";
