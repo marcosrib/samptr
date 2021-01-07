@@ -23,7 +23,7 @@ public class LinkedController {
 	
 	@GetMapping(value = "/create-link")
 	public String getLink() {
-       return "/index";
+       return "redirect:/";
 	}
 	
 	@PostMapping(value = "/create-link")
