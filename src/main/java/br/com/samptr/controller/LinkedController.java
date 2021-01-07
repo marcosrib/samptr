@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import br.com.samptr.dtos.LinkedDTO;
@@ -19,8 +20,13 @@ public class LinkedController {
 	
 	@Autowired
 	private LinkedService service;
-
-	@PostMapping(value = "/addlink")
+	
+	@GetMapping(value = "/create-link")
+	public String getLink() {
+       return "/index";
+	}
+	
+	@PostMapping(value = "/create-link")
 	public String create(@Validated LinkedDTO dto, BindingResult result, Model model) {
 		LinkedEntity linkendEntity  = service.save(convertDTOToEntity(dto));
 		LinkedDTO dtoConverted = convertEntityToDTO(linkendEntity);
