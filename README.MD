@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.com/github/marcosrib/samptr.svg?branch=master)](https://travis-ci.com/github/marcosrib/samptr)
+[![Build Status](https://api.travis-ci.com/marcosrib/samptr.svg?branch=master)](https://api.travis-ci.com/marcosrib/samptr.svg)
