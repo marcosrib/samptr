@@ -22,8 +22,7 @@ public class DownloadFileController {
 	@Autowired
 	private DownloadFileService service;
 	
-	
-    @GetMapping("{hash}")
+	@GetMapping("{hash}")
 	public HttpEntity<Resource> downloadFile(@PathVariable("hash") String hash,HttpServletRequest request) {
     	
     	Resource resource = service.dawnloadFile(hash);
